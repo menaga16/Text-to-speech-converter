@@ -24,17 +24,20 @@
         
         <script>
             function textSpeak() {
-                var text=document.getElementById("txt").value;
+                var text = document.getElementById("txt").value;
                 responsiveVoice.speak(text);
             }
 
             function downloadVoice() {
-                var text=document.getElementById("txt").value;
-                var url='https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q='+encodeURIComponent(text);
-                
-                var link=document.createElement('a');
-                link.href=url;
-                link.download='generated_voice.mp3';
+                var text = document.getElementById("txt").value;
+                var audioUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=' + encodeURIComponent(text);
+
+                var audio = new Audio(audioUrl);
+                audio.play();
+
+                var link = document.createElement('a');
+                link.href = audioUrl;
+                link.download = 'generated_voice.mp3';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
