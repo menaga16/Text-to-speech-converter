@@ -5,56 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
-    <title>Text to Speech</title>
+    <title>Text to speech</title>
 </head>
 <body>
-    <br>
-    <br>
-    <h1>
-        Text to Speech Converter
-    </h1>
-    <center>
-        <textarea id="txt" name="text"></textarea>
-        <br>
-        <br>
-        <br>
-        
-        <input class="btn" type="button" onclick="textSpeak()" value="Speak">
-        <input class="btn" type="button" onclick="downloadVoice()" value="Download Voice">
-        
-        <script>
-            function textSpeak() {
-                var text = document.getElementById("txt").value;
-                responsiveVoice.speak(text);
-            }
-
-            function downloadVoice() {
-                var text = document.getElementById("txt").value;
-                var apiKey = 'YOUR_VOICERSS_API_KEY'; 
-                var apiUrl = 'http://api.voicerss.org/';
-
-                fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: 'key=' + apiKey + '&src=' + encodeURIComponent(text) + '&hl=en-us&r=-3&c=MP3',
-                })
-                .then(response => response.blob())
-                .then(blob => {
-       
-                    var link = document.createElement('a');
-                    link.href = URL.createObjectURL(blob);
-                    link.download = 'generated_voice.mp3';
-
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                })
-                .catch(error => console.error('Error:', error));
-            }
-        </script>
-    </center>
     <script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js"></script>
+   <br>
+   <br>
+    <h1>
+        Text to speech converter 
+    </h1>
+    <CENTER>
+    <textarea id="txt" name="text"></textarea>
+    <br>
+    <br>
+    <br>
+    <input class="btn" type="button" onclick="textSpeak()" value="submit"> 
+    <script>
+        function textSpeak(){
+            var text = document.getElementById("txt").value;
+            responsiveVoice.speak(text);
+        }
+    </script>
+    </CENTER>
 </body>
 </html>
